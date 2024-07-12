@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { Add as AddIcon } from "@mui/icons-material";
 import Rating from "@mui/material/Rating";
+import Cookies from "js-cookie";
 
 interface Phone {
   _id?: number;
@@ -52,8 +53,14 @@ const CreatePhoneCard: React.FC<CreatePhoneCardProps> = ({ onCreate }) => {
   };
 
   const handleCreate = () => {
+    const token = Cookies.get("token");
+
     axios
-      .post("http://localhost:4000/phone/create", newPhone)
+      .post("http://localhost:4000/phone/create", newPhone, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         onCreate(response.data);
         handleCloseModal();

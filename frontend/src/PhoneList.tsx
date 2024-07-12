@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PhoneCard from "./PhoneCard";
-import CreatePhoneCard from "./CreatePhoneCard"; // Assurez-vous d'avoir ce composant
+import CreatePhoneCard from "./CreatePhoneCard";
 import { Grid } from "@mui/material";
 import io from "socket.io-client";
 
@@ -76,12 +76,7 @@ const PhoneList = () => {
         </Grid>
       ))}
       <Grid item>
-        <CreatePhoneCard
-          onCreate={(newPhone) => {
-            // Logique pour ajouter un nouveau téléphone à la liste
-            // Peut-être émettre un événement socket ou appeler une API, puis mettre à jour l'état local
-          }}
-        />
+        <CreatePhoneCard onCreate={(newPhone) => {}} />
       </Grid>
     </Grid>
   );
