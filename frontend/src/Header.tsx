@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from "js-cookie";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,6 +12,13 @@ interface HeaderProps {
 }
 
 const Header = ({ onLogin, onSignup }: HeaderProps) => {
+  const isLoggedIn = !!Cookies.get("token");
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    window.location.reload();
+  };
+
   return (
     <AppBar position="sticky">
       <Container maxWidth="xl">
@@ -18,12 +26,20 @@ const Header = ({ onLogin, onSignup }: HeaderProps) => {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Phone Shop
           </Typography>
-          <Button color="inherit" onClick={onLogin}>
-            Login
-          </Button>
-          <Button color="inherit" onClick={onSignup}>
-            Signup
-          </Button>
+          {isLoggedIn ? (
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
+            </Button>
+          ) : (
+            <>
+              <Button color="inherit" onClick={onLogin}>
+                Login
+              </Button>
+              <Button color="inherit" onClick={onSignup}>
+                Signup
+              </Button>
+            </>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

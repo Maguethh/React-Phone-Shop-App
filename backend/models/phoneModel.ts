@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
-const phoneModel = new mongoose.Schema({
-  _id: Number,
+const phoneSchema = new mongoose.Schema({
   name: String,
   type: String,
   price: Number,
@@ -10,6 +9,6 @@ const phoneModel = new mongoose.Schema({
   available: Boolean,
 });
 
-const Phone = mongoose.model("Phone", phoneModel);
+const Phone = mongoose.model("Phone", phoneSchema);
 
 export default Phone;
