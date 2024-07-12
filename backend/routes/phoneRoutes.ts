@@ -1,10 +1,17 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import { authMiddleware } from "../middlewares/authMiddleware";
+import {
+  getPhones,
+  createPhone,
+  updatePhone,
+  deletePhone,
+} from "../controllers/phoneController";
 
 const router = express.Router();
 
-router.get("/protected", authMiddleware, (req: Request, res: Response) => {
-  res.send("This is a protected phone route");
-});
+router.get("/list", getPhones);
+router.post("/create", createPhone);
+router.put("/update/:id", updatePhone);
+router.delete("/delete/:id", deletePhone);
 
 export default router;

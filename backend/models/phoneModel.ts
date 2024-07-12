@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const phoneModel = new mongoose.Schema({
   _id: Number,

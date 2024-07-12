@@ -4,6 +4,7 @@ import "./App.css";
 import Button from "@mui/material/Button";
 import Header from "./Header";
 import AuthModal from "./AuthModal";
+import PhoneList from "./PhoneList";
 import { useState } from "react";
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         onClose={handleAuthModalClose}
         mode={authMode}
       />
+      <PhoneList />
     </div>
   );
 };
