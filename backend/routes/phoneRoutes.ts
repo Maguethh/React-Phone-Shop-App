@@ -10,8 +10,8 @@ import {
 const router = express.Router();
 
 router.get("/list", getPhones);
-router.post("/create", createPhone);
-router.put("/update/:id", updatePhone);
-router.delete("/delete/:id", deletePhone);
+router.post("/create", authMiddleware, createPhone);
+router.put("/update/:id", authMiddleware, updatePhone);
+router.delete("/delete/:id", authMiddleware, deletePhone);
 
 export default router;
