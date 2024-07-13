@@ -51,9 +51,6 @@ const PhoneCard: React.FC<PhoneCardProps> = ({ phone, onDelete, onUpdate }) => {
           Authorization: `Bearer ${Cookies.get("token")}`,
         },
       })
-      .then(() => {
-        onDelete(phone._id);
-      })
       .catch((error) => console.error("There was an error!", error));
     handleCloseDeleteDialog();
   };
@@ -66,9 +63,7 @@ const PhoneCard: React.FC<PhoneCardProps> = ({ phone, onDelete, onUpdate }) => {
           Authorization: `Bearer ${Cookies.get("token")}`,
         },
       })
-      .then(() => {
-        onUpdate(editedPhone);
-      })
+
       .catch((error) => console.error("There was an error!", error));
     handleCloseEditModal();
   };
